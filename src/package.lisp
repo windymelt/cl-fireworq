@@ -1,4 +1,4 @@
 (defpackage cl-fireworq
-  (:use #:cl))
+  (:use #:cl #:rutils))
 
 (defpackage fwq)
