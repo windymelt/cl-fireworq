@@ -1,8 +1,21 @@
 # Cl-Fireworq
 
+Common Lisp client for [Fireworq](https://github.com/fireworq/fireworq)
+
 ## Usage
 
+```lisp
+;; load system
+(asdf:load-system :cl-fireworq)
+
+(cl-fireworq:with-connection (:host "redis-host.test" :port 8080)
+  (fwq:queue-stats "default")
+  ...)
+```
+
 ## Installation
+
+Will be available on quicklisp
 
 ## Author
 
