@@ -13,6 +13,8 @@ Common Lisp client for [Fireworq](https://github.com/fireworq/fireworq)
   ...)
 ```
 
+Check [commands.lisp](https://github.com/windymelt/cl-fireworq/blob/master/src/commands.lisp) to see supported commands.
+
 ## Installation
 
 Will be available on quicklisp
