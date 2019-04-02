@@ -15,7 +15,8 @@
   :serial t
   :components ((:module "src"
                 :components
-                ((:file "package"))))
+                ((:file "package")
+                 (:file "connection"))))
   :description ""
   :long-description
   #.(read-file-string
