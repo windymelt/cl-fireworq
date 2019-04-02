@@ -12,9 +12,10 @@
   :author "Windymelt"
   :license "Apache License 2"
   :depends-on ()
+  :serial t
   :components ((:module "src"
                 :components
-                ((:file "cl-fireworq"))))
+                ((:file "package"))))
   :description ""
   :long-description
   #.(read-file-string
