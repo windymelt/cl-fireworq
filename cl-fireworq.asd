@@ -11,12 +11,14 @@
   :version "0.1.0"
   :author "Windymelt"
   :license "Apache License 2"
-  :depends-on ()
+  :depends-on (:dexador :rutils :cl-json)
   :serial t
   :components ((:module "src"
                 :components
                 ((:file "package")
-                 (:file "connection"))))
+                 (:file "connection")
+                 (:file "fireworq")
+                 (:file "commands"))))
   :description ""
   :long-description
   #.(read-file-string

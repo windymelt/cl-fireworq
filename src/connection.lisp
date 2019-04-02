@@ -46,5 +46,5 @@
   "Evaluate BODY with the current connection bound to a new connection specified by the given HOST and PORT"
   `(let* ((*connection* (make-instance 'fireworq-connection :host ,host :port ,port :auth ,auth)))
      (unwind-protect
-          (progn @,body)
+          (progn ,@body)
        (disconnect))))
