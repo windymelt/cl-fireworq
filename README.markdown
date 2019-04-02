@@ -30,3 +30,5 @@ Copyright (c) 2019 Windymelt
 ## License
 
 Licensed under the Apache License 2 License.
+
+This software is inspired from [cl-redis](https://github.com/vseloved/cl-redis).
