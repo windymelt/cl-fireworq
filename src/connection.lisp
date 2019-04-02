@@ -1,7 +1,11 @@
 (in-package :cl-fireworq)
 
+(cl-annot:enable-annot-syntax)
+
+@export
 (defvar *connection* nil "The current fireworq connection.")
 
+@export-class
 (defclass fireworq-connection ()
   ((host
     :initarg  :host
@@ -17,10 +21,12 @@
     :reader conn-auth))
   (:documentation "Representation of a Fireworq connection."))
 
+@export
 (defun connected-p ()
   "Is there a current connection?"
   *connection*)
 
+@export
 (defun connect (&key (host "127.0.0.1") (port 8080) auth)
   "Connect to fireworq server."
   (when (connected-p)
@@ -36,11 +42,13 @@
                                     :port port
                                     :auth auth)))
 
+@export
 (defun disconnect ()
   "Disconnect from fireworq server."
   (when *connection*
     (setf *connection* nil)))
 
+@export
 (defmacro with-connection ((&key (host "127.0.0.1") (port 8080) auth)
                            &body body)
   "Evaluate BODY with the current connection bound to a new connection specified by the given HOST and PORT"

@@ -11,7 +11,7 @@
   :version "0.1.0"
   :author "Windymelt"
   :license "Apache License 2"
-  :depends-on (:dexador :rutils :cl-json)
+  :depends-on (:dexador :rutils :cl-json :cl-annot)
   :serial t
   :components ((:module "src"
                 :components
