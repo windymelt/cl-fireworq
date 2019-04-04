@@ -34,49 +34,17 @@ processing a fireworq command CMD."
          ,docstring
          (cl-json:decode-json
           (flet ((args-to-content (actual-args) (with-output-to-string (s) (cl-json:encode-json-alist (mapcar #'cons ',args actual-args) s))))
-            ,(ecase method
-               (:get
-                `(dex:get
-                  (quri:make-uri
-                   :scheme "http"
-                   :host (conn-host *connection*)
-                   :port (conn-port *connection*)
-                   :path ,(concatenate 'list `(format nil ,path) pathparams))
-                  :headers '(("Content-Type" . "application/json"))
-                  :want-stream t
-                  :basic-auth (conn-auth *connection*)))
-               (:post
-                `(dex:post
-                  (quri:make-uri
-                   :scheme "http"
-                   :host (conn-host *connection*)
-                   :port (conn-port *connection*)
-                   :path ,(concatenate 'list `(format nil ,path) pathparams))
-                  :headers '(("Content-Type" . "application/json"))
-                  :content (args-to-content (list ,@args))
-                  :want-stream t
-                  :basic-auth (conn-auth *connection*)))
-               (:put
-                `(dex:put
-                  (quri:make-uri
-                   :scheme "http"
-                   :host (conn-host *connection*)
-                   :port (conn-port *connection*)
-                   :path ,(concatenate 'list `(format nil ,path) pathparams))
-                  :headers '(("Content-Type" . "application/json"))
-                  :content (args-to-content (list ,@args))
-                  :want-stream t
-                  :basic-auth (conn-auth *connection*)))
-               (:delete
-                `(dex:delete
-                  (quri:make-uri
-                   :scheme "http"
-                   :host (conn-host *connection*)
-                   :port (conn-port *connection*)
-                   :path ,(concatenate 'list `(format nil ,path) pathparams))
-                  :headers '(("Content-Type" . "application/json"))
-                  :want-stream t
-                  :basic-auth (conn-auth *connection*)))))))
+            (dex:request
+             (quri:make-uri
+              :scheme "http"
+              :host (conn-host *connection*)
+              :port (conn-port *connection*)
+              :path ,(concatenate 'list `(format nil ,path) pathparams))
+             :method ,method
+             :headers '(("Content-Type" . "application/json"))
+             :content (args-to-content (list ,@args))
+             :want-stream t
+             :basic-auth (conn-auth *connection*)))))
        (abbr ,cmd-name ,cmd)
        (export ',cmd-name '#:cl-fireworq)
        (import ',cmd '#:fwq)
